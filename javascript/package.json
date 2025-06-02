@@ -1,0 +1,28 @@
+{
+  "name": "b2brilliant-sdk",
+  "version": "0.1.0",
+  "description": "JavaScript SDK for the B2B Campaign Agent API",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "b2b",
+    "campaign",
+    "marketing",
+    "api",
+    "sdk",
+    "b2brilliant"
+  ],
+  "author": "B2Brilliant",
+  "license": "BSL-1.1",
+  "dependencies": {
+    "node-fetch": "^2.6.7"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
