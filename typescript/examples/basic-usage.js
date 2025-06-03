@@ -6,18 +6,25 @@
 // const Agent = require('b2brilliant-sdk');
 
 // For development/testing, import from local path
-const Agent = require('../src/index');
+const B2BrilliantAgent = require('b2brilliant-sdk');
 
 // Initialize with your API key
-const agent = new Agent({
+const agent = new B2BrilliantAgent({
   apiKey: 'your-api-key-here',
 });
+
+console.log('Using API URL:', agent.apiClient.baseUrl);
+
+const USER_BUSINESS = "https://themediamasons.com"
+const TARGET_BUSINESS = "https://tunipoints.com"
 
 async function runExample() {
   try {
     console.log('Discovering user business information...');
+    console.log('Calling endpoint:', agent.apiClient.baseUrl + '/api/user/discover');
+    console.log('With API key:', agent.apiClient.apiKey);
     const userBusiness = await agent.user.discover([
-      'https://yourbusiness.com'
+	    USER_BUSINESS
     ], {
       findCompetitors: true,  // Optional: find competitors
       findBranding: true      // Optional: find branding information
@@ -26,7 +33,7 @@ async function runExample() {
 
     console.log('\nDiscovering target business information...');
     const targetBusiness = await agent.business.discover([
-      'https://targetbusiness.com'
+	    TARGET_BUSINESS
     ]);
     console.log('✅ Target business discovered:', targetBusiness.profile.name);
 
@@ -36,7 +43,7 @@ async function runExample() {
     console.log('Positives:', compatibility.reasoning.positives);
 
     console.log('\nGenerating campaigns...');
-    const campaigns = await agent.campaigns.create(userBusiness, targetBusiness);
+    const campaigns = await agent.campaigns.create(userBusiness, targetBusiness, 'email');
     console.log(`✅ Generated ${campaigns.campaigns.length} campaigns`);
     
     // Display the email campaign content
@@ -54,7 +61,7 @@ async function runExample() {
       userBusiness,
       targetBusiness,
       campaigns,
-      "Make the tone more professional and focus on their recent funding"
+      "Make the tone more casual and human while remaining authoritive."
     );
     console.log('✅ Campaign refined');
 

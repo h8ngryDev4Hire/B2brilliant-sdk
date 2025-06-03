@@ -5,15 +5,18 @@
 /**
  * API Error class for handling API request errors
  */
-class ApiError extends Error {
+export class ApiError extends Error {
+  public readonly status: number;
+  public readonly data: Record<string, any>;
+
   /**
    * Create a new API error
    * 
-   * @param {string} message - Error message
-   * @param {number} status - HTTP status code
-   * @param {Object} data - Additional error data
+   * @param message - Error message
+   * @param status - HTTP status code
+   * @param data - Additional error data
    */
-  constructor(message, status, data = {}) {
+  constructor(message: string, status: number, data: Record<string, any> = {}) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
@@ -29,14 +32,16 @@ class ApiError extends Error {
 /**
  * Validation Error class for handling input validation errors
  */
-class ValidationError extends Error {
+export class ValidationError extends Error {
+  public readonly validationErrors: Record<string, any>;
+
   /**
    * Create a new validation error
    * 
-   * @param {string} message - Error message
-   * @param {Object} validationErrors - Validation errors
+   * @param message - Error message
+   * @param validationErrors - Validation errors
    */
-  constructor(message, validationErrors = {}) {
+  constructor(message: string, validationErrors: Record<string, any> = {}) {
     super(message);
     this.name = 'ValidationError';
     this.validationErrors = validationErrors;
@@ -47,8 +52,3 @@ class ValidationError extends Error {
     }
   }
 }
-
-module.exports = {
-  ApiError,
-  ValidationError
-}; 

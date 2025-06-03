@@ -2,18 +2,19 @@
  * API Client for making HTTP requests to the B2B Campaign Agent API
  */
 
-const fetch = require('node-fetch');
-const { ApiError } = require('./errors');
+import { ApiError } from './errors';
+import type { ApiClientConfig } from './types';
 
-class ApiClient {
+export class ApiClient {
+  private readonly apiKey: string;
+  private readonly baseUrl: string;
+
   /**
    * Create a new API client
    * 
-   * @param {Object} config - Configuration options
-   * @param {string} config.apiKey - API key for authentication
-   * @param {string} config.baseUrl - Base URL for the API
+   * @param config - Configuration options
    */
-  constructor(config) {
+  constructor(config: ApiClientConfig) {
     this.apiKey = config.apiKey;
     this.baseUrl = config.baseUrl;
   }
@@ -21,14 +22,14 @@ class ApiClient {
   /**
    * Make a POST request to the API
    * 
-   * @param {string} endpoint - API endpoint
-   * @param {Object} [data] - Request body
-   * @returns {Promise<Object>} Response data
+   * @param endpoint - API endpoint
+   * @param data - Request body
+   * @returns Response data
    */
-  async post(endpoint, data = {}) {
+  async post<T = any>(endpoint: string, data: Record<string, any> = {}): Promise<T> {
     const url = new URL(`${this.baseUrl}${endpoint}`);
     
-    return this._fetch(url, {
+    return this._fetch<T>(url, {
       method: 'POST',
       body: JSON.stringify(data)
     });
@@ -38,18 +39,18 @@ class ApiClient {
    * Make a fetch request with error handling
    * 
    * @private
-   * @param {URL} url - Request URL
-   * @param {Object} options - Fetch options
-   * @returns {Promise<Object>} Response data
+   * @param url - Request URL
+   * @param options - Fetch options
+   * @returns Response data
    */
-  async _fetch(url, options) {
-    const fetchOptions = {
+  private async _fetch<T>(url: URL, options: RequestInit): Promise<T> {
+    const fetchOptions: RequestInit = {
       ...options,
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
         'x-api-key': this.apiKey,
-        ...options.headers
+        'Accept-Encoding': 'deflate',
+        'Content-Type': 'application/json',
+        ...(options.headers || {})
       }
     };
 
@@ -65,19 +66,18 @@ class ApiClient {
         );
       }
       
-      return await response.json();
+      return await response.json() as T;
     } catch (error) {
       if (error instanceof ApiError) {
         throw error;
       }
       
+      const err = error as Error;
       throw new ApiError(
-        error.message || 'Network error',
+        err.message || 'Network error',
         0,
         { originalError: error }
       );
     }
   }
 }
-
-module.exports = ApiClient; 
