@@ -6,7 +6,7 @@
 // const Agent = require('b2brilliant-sdk');
 
 // For development/testing, import from local path
-const B2BrilliantAgent = require('b2brilliant-sdk');
+const B2BrilliantAgent = require('../dist/index.js').default;
 
 // Initialize with your API key
 const agent = new B2BrilliantAgent({

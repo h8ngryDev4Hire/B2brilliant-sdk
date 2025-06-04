@@ -1,0 +1,25 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "b2brilliant_sdk"
+version = "0.1.1"
+authors = [
+  { name = "B2Brilliant" },
+]
+description = "The Official Python SDK for the B2Brilliant Campaign Agent API"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: Other/Proprietary License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "requests>=2.25.0",
+]
+
+[project.urls]
+"Homepage" = "https://b2brilliant.app"
+"Bug Tracker" = "https://github.com/h8ngryDev4Hire/b2brilliant-sdk/issues" 

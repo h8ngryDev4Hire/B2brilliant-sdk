@@ -1,6 +1,6 @@
 {
   "name": "b2brilliant-sdk",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "The Official Typescript SDK for the B2Brilliant Campaign Agent API",
   "main": "dist/index.js",
   "types": "./types/",
