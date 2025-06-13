@@ -1,2 +1,9 @@
 # dist builds
 dist/
+
+# Jest files
+coverage/
+
+# npm
+node_modules/
+package-lock.json/

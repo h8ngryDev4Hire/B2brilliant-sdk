@@ -20,6 +20,18 @@ dependencies = [
     "requests>=2.25.0",
 ]
 
+[project.optional-dependencies]
+test = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "requests-mock>=1.9.0",
+]
+
 [project.urls]
 "Homepage" = "https://b2brilliant.app"
-"Bug Tracker" = "https://github.com/h8ngryDev4Hire/b2brilliant-sdk/issues" 
+"Bug Tracker" = "https://github.com/h8ngryDev4Hire/b2brilliant-sdk/issues"
+
+[tool.pytest.ini_options]
+testpaths = ["b2brilliant_sdk"]
+python_files = ["*_test.py", "test_*.py"]
+addopts = "--cov=b2brilliant_sdk --cov-report=term-missing --cov-report=html" 
