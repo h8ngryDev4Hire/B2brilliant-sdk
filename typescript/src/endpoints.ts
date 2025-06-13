@@ -4,19 +4,19 @@
 
 // User endpoints
 export const USER_ENDPOINTS = {
-  DISCOVER: '/api/user/discover',
-  REFINE: '/api/user/refine'
+  DISCOVER: '/api/v1/user/discover',
+  REFINE: '/api/v1/user/refine'
 } as const;
 
 // Business endpoints
 export const BUSINESS_ENDPOINTS = {
-  DISCOVER: '/api/business/discover',
-  REFINE: '/api/business/refine',
-  COMPATIBILITY: '/api/business/compatibility'
+  DISCOVER: '/api/v1/business/discover',
+  REFINE: '/api/v1/business/refine',
+  COMPATIBILITY: '/api/v1/business/compatibility'
 } as const;
 
 // Campaign endpoints
 export const CAMPAIGN_ENDPOINTS = {
-  CREATE: '/api/campaigns/create',
-  REFINE: '/api/campaigns/refine'
+  CREATE: '/api/v1/campaigns/create',
+  REFINE: '/api/v1/campaigns/refine'
 } as const;

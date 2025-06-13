@@ -21,7 +21,7 @@ const TARGET_BUSINESS = "https://tunipoints.com"
 async function runExample() {
   try {
     console.log('Discovering user business information...');
-    console.log('Calling endpoint:', agent.apiClient.baseUrl + '/api/user/discover');
+    console.log('Calling endpoint:', agent.apiClient.baseUrl + '/api/v1/user/discover');
     console.log('With API key:', agent.apiClient.apiKey);
     const userBusiness = await agent.user.discover([
 	    USER_BUSINESS

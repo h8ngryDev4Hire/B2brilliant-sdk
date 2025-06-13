@@ -24,7 +24,7 @@ def run_example():
     """Run the example"""
     try:
         print("Discovering user business information...")
-        print(f"Calling endpoint: {agent.api_client.base_url}/api/user/discover")
+        print(f"Calling endpoint: {agent.api_client.base_url}/api/v1/user/discover")
         print(f"With API key: {agent.api_client.api_key}")
         user_business = agent.user.discover(
             [USER_BUSINESS],

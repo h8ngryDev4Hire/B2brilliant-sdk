@@ -6,17 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CAMPAIGN_ENDPOINTS = exports.BUSINESS_ENDPOINTS = exports.USER_ENDPOINTS = void 0;
 // User endpoints
 exports.USER_ENDPOINTS = {
-    DISCOVER: '/api/user/discover',
-    REFINE: '/api/user/refine'
+    DISCOVER: '/api/v1/user/discover',
+    REFINE: '/api/v1/user/refine'
 };
 // Business endpoints
 exports.BUSINESS_ENDPOINTS = {
-    DISCOVER: '/api/business/discover',
-    REFINE: '/api/business/refine',
-    COMPATIBILITY: '/api/business/compatibility'
+    DISCOVER: '/api/v1/business/discover',
+    REFINE: '/api/v1/business/refine',
+    COMPATIBILITY: '/api/v1/business/compatibility'
 };
 // Campaign endpoints
 exports.CAMPAIGN_ENDPOINTS = {
-    CREATE: '/api/campaigns/create',
-    REFINE: '/api/campaigns/refine'
+    CREATE: '/api/v1/campaigns/create',
+    REFINE: '/api/v1/campaigns/refine'
 };
